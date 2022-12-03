@@ -10,6 +10,7 @@ var container = document.getElementById("container");
 // creating a box
 
 function createBox(thisBox) {
+    debugger;
     currentBox = "box " + numberOfBoxes;
     currentForm = "form " + numberOfBoxes;
     form = document.getElementById(currentForm);
@@ -32,7 +33,7 @@ function createBox(thisBox) {
     newBoxBelow.classList.add("grid-item");
     newBoxBelow.innerHTML = `<h3>This is the new stuff! Box number ${numberOfBoxes}</h3>
     <form id="form ${numberOfBoxes}">
-    <button type="submit">Submit</button>
+    <button type="submitAgain">Submit</button>
     </form>`;
     currentForm = "form " + numberOfBoxes;
     form = document.getElementById(currentForm);
@@ -42,6 +43,14 @@ function createBox(thisBox) {
 // when submit is clicked
 
 form.addEventListener("submit", function(event){
+    event.preventDefault();
+    console.log("numberOfBoxes = " + numberOfBoxes);
+    createBox(numberOfBoxes);
+    console.log("numberOfBoxes = " + numberOfBoxes);
+    return false;
+});
+
+form.addEventListener("submitAgain", function(event){
     event.preventDefault();
     console.log("numberOfBoxes = " + numberOfBoxes);
     createBox(numberOfBoxes);
