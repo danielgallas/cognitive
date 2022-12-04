@@ -1,4 +1,4 @@
-// getting info from html
+// defining global scope variables and getting info from html
 
 var numberOfBoxes = 1;
 var currentBox = "box " + numberOfBoxes;
@@ -10,7 +10,6 @@ var container = document.getElementById("container");
 // creating a box
 
 function createBox(thisBox) {
-    debugger;
     currentBox = "box " + numberOfBoxes;
     currentForm = "form " + numberOfBoxes;
     form = document.getElementById(currentForm);
@@ -20,11 +19,11 @@ function createBox(thisBox) {
     console.log(form);    
     console.log(box);    
     
-    // const closingBox = document.createElement("p");
-    // closingBox.innerHTML = `<h2>Box closed</h2>
-    // <h3>Description: Now open a new box</h3>
-    // `;
-    // form.replaceWith(closingBox);
+    const closingBox = document.createElement("p");
+    closingBox.innerHTML = `<h2>Box closed</h2>
+    <h3>Description: Now open a new box</h3>
+    `;
+    form.replaceWith(closingBox);
     
     numberOfBoxes = thisBox + 1;
     currentBox = "box " + numberOfBoxes;
@@ -42,15 +41,14 @@ function createBox(thisBox) {
 
 // when submit is clicked
 
-form.addEventListener("submit", function(event){
+container.addEventListener("submit", function(event){
     event.preventDefault();
     console.log("numberOfBoxes = " + numberOfBoxes);
     createBox(numberOfBoxes);
     console.log("numberOfBoxes = " + numberOfBoxes);
-    return false;
 });
 
-form.addEventListener("submitAgain", function(event){
+container.addEventListener("submitAgain", function(event){
     event.preventDefault();
     console.log("numberOfBoxes = " + numberOfBoxes);
     createBox(numberOfBoxes);
